@@ -1,0 +1,18 @@
+[{
+	"name": "default",
+	"type": "postgres",
+	"host": "localhost",
+	"port": 5432,
+	"username": "bio_my_link_user",
+	"password": "Pass102030@",
+	"database": "bio_my_link_db",
+	"entities": [
+		"./src/models/*.ts"
+	],
+	"migrations": [
+		"./src/database/migrations/*.ts"
+	],
+	"cli": {
+		"migrationsDir": "./src/database/migrations"
+	}
+}]
