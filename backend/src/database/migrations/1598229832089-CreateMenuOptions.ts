@@ -28,21 +28,21 @@ export class CreateMenuOptions1598229832089 implements MigrationInterface {
   					type: 'varchar',
   					isNullable: true
   				},
-          {
-            name: 'meop_icon',
-            type: 'varchar',
-            isNullable: true
-          },
-          {
-            name: 'meop_text',
-            type: 'varchar',
-            isNullable: true
-          },
-          {
-            name: 'meop_route',
-            type: 'varchar',
-            isNullable: true
-          },
+				{
+					name: 'meop_icon',
+					type: 'varchar',
+					isNullable: true
+				},
+				{
+					name: 'meop_text',
+					type: 'varchar',
+					isNullable: true
+				},
+				{
+					name: 'meop_route',
+					type: 'varchar',
+					isNullable: true
+				},
   				{
   					name: 'created_at',
   					type: 'timestamp',

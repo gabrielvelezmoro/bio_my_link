@@ -29,11 +29,11 @@ export class CreateUsers1598229832087 implements MigrationInterface {
   					type: 'varchar',
   					isNullable: true
   				},
-          {
-            name: 'user_avatar',
-            type: 'varchar',
-            isNullable: true
-          },
+				{
+				name: 'user_avatar',
+				type: 'varchar',
+				isNullable: true
+				},
   				{
   					name: 'created_at',
   					type: 'timestamp',
