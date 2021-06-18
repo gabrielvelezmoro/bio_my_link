@@ -11,7 +11,7 @@ export class CreateMenuOptions1598229832089 implements MigrationInterface {
   					type: 'varchar',
   					isPrimary: true,
   					generationStrategy: 'uuid',
-            default: 'uuid_generate_v4()'
+            		default: 'uuid_generate_v4()'
   				},
   				{
   					name: 'meop_module_seq',

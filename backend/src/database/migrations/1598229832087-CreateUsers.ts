@@ -1,4 +1,4 @@
-import { MigrationInterface, QueryRunner, Table } from "typeorm";
+import { MigrationInterface, QueryRunner, Table, TableForeignKey } from "typeorm";
 
 export class CreateUsers1598229832087 implements MigrationInterface {
 	public async up(queryRunner: QueryRunner): Promise<void> {
@@ -11,28 +11,38 @@ export class CreateUsers1598229832087 implements MigrationInterface {
   					type: 'varchar',
   					isPrimary: true,
   					generationStrategy: 'uuid',
-            default: 'uuid_generate_v4()'
+            		default: 'uuid_generate_v4()'
   				},
   				{
-  					name: 'user_name',
+  					name: 'user_username',
   					type: 'varchar',
-  					isNullable: true
+					isUnique: true
   				},
   				{
   					name: 'user_email',
   					type: 'varchar',
-  					isNullable: true,
   					isUnique: true
   				},
   				{
   					name: 'user_password',
   					type: 'varchar',
-  					isNullable: true
+  				},
+  				{
+  					name: 'profile_id',
+  					type: 'varchar',
+					isUnique: true,
+					isNullable: true
+
+  				},
+  				{
+  					name: 'user_customer',
+  					type: 'boolean',
+					default: true
   				},
 				{
-				name: 'user_avatar',
-				type: 'varchar',
-				isNullable: true
+					name: 'user_avatar',
+					type: 'varchar',
+					isNullable: true
 				},
   				{
   					name: 'created_at',
@@ -47,6 +57,7 @@ export class CreateUsers1598229832087 implements MigrationInterface {
   			]
   		})
   	);
+	  
   }
 
   public async down(queryRunner: QueryRunner): Promise<void> {

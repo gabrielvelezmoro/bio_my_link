@@ -11,19 +11,19 @@ export class CreateModules1598229832088 implements MigrationInterface {
   					type: 'varchar',
   					isPrimary: true,
   					generationStrategy: 'uuid',
-            default: 'uuid_generate_v4()'
+           			default: 'uuid_generate_v4()'
   				},
-          {
-            name: 'modu_name',
-            type: 'varchar',
-            isNullable: true,
-            isUnique: true
-          },
-          {
-            name: 'modu_seq',
-            type: 'varchar',
-            isNullable: true,
-          },
+				{
+					name: 'modu_name',
+					type: 'varchar',
+					isNullable: true,
+					isUnique: true
+				},
+				{
+					name: 'modu_seq',
+					type: 'varchar',
+					isNullable: true,
+				},
   				{
   					name: 'created_at',
   					type: 'timestamp',

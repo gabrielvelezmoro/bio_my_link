@@ -8,17 +8,23 @@ class User {
 	id: string;
 
 	@Column()
-	user_name: string;
-
+	user_name: String;
+	
 	@Column()
-	user_email: string;
+	user_email: String;
 
 	@Column()
 	@Exclude()
-	user_password: string;
+	user_password: String;
 
 	@Column()
-	user_avatar: string;
+	user_customer: Boolean;
+	
+	@Column()
+	profile_id: String;
+
+	@Column()
+	user_avatar: String;
 
 	@CreateDateColumn()
 	created_at: Date;
@@ -27,7 +33,7 @@ class User {
 	updated_at: Date;
 
 	@Expose({ name: 'avatar_url' })
-	getAvatarUrl(): string | null {
+	getAvatarUrl(): String | null {
 		return this.user_avatar ? `${process.env.APP_API_URL}/files/${this.user_avatar}` : null;
 	}
 }

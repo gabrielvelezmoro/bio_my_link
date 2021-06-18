@@ -1,4 +1,4 @@
-import {MigrationInterface, QueryRunner, Table} from "typeorm";
+import {MigrationInterface, QueryRunner, Table, TableForeignKey} from "typeorm";
 
 export class CreateProfiles1623784114772 implements MigrationInterface {
 
@@ -17,13 +17,14 @@ export class CreateProfiles1623784114772 implements MigrationInterface {
                     {
                         name: 'prof_username',
                         type: 'varchar',
-                        isNullable: true
+                        isNullable: true,
+                        isUnique: true
+
                     },
                     {
                         name: 'prof_description',
                         type: 'varchar',
                         isNullable: true,
-                        isUnique: true
                     },
                     {
                         name: 'prof_links',
@@ -47,7 +48,15 @@ export class CreateProfiles1623784114772 implements MigrationInterface {
                     }
                 ]
             })
-        )
+        );
+        await queryRunner.createForeignKey(
+            'users',
+            new TableForeignKey({
+              columnNames: ['profile_id'],
+              referencedTableName: 'profiles',
+              referencedColumnNames: ['id']
+            })
+          )
     }
 
     public async down(queryRunner: QueryRunner): Promise<void> {
