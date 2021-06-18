@@ -15,21 +15,9 @@ export class CreateProfiles1623784114772 implements MigrationInterface {
                         default: 'uuid_generate_v4()'
                     },
                     {
-                        name: 'prof_username',
-                        type: 'varchar',
-                        isNullable: true,
-                        isUnique: true
-
-                    },
-                    {
                         name: 'prof_description',
                         type: 'varchar',
                         isNullable: true,
-                    },
-                    {
-                        name: 'prof_links',
-                        type: 'varchar',
-                        isNullable: true
                     },
                     {
                         name: 'prof_custom_url',
