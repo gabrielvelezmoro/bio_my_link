@@ -9,7 +9,6 @@ export default class UserController {
 			const { 
 				userName, 
 				userEmail, 
-				userProfile,
 				userCustomer,
 				userPassword 
 			} = request.body;
@@ -19,7 +18,6 @@ export default class UserController {
 			const user = await userCreate.execute({
 				user_name: userName,
 				user_email: userEmail,
-				profile_id: userProfile,
 				user_customer: userCustomer,
 				user_password: userPassword
 			});

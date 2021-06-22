@@ -12,7 +12,6 @@ class ProfileListFilteredCountService {
 
 		let sqlWhere = '';
 		
-		sqlWhere += 'prof_username ilike \'%' + search + '%\' or ';
 		sqlWhere += 'prof_description ilike \'%' + search + '%\' or ';
 		sqlWhere += 'prof_links ilike \'%' + search + '%\' or ';
 		sqlWhere += 'prof_custom_url ilike \'%' + search + '%\'';

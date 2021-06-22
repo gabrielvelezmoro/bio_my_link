@@ -1,18 +1,16 @@
-import { Entity, Column, PrimaryGeneratedColumn, CreateDateColumn, UpdateDateColumn } from 'typeorm';
+import { Entity, Column, PrimaryGeneratedColumn, CreateDateColumn, UpdateDateColumn, OneToOne, JoinColumn } from 'typeorm';
+import User from './User';
 
 @Entity('profiles', {database: 'default', schema: 'public'})
 class Profile {
 	@PrimaryGeneratedColumn('uuid')
 	id: string;
 
-	@Column()
-	prof_username: string;
+	@OneToOne(type => User, profile => Profile )
+	user: User;
 
 	@Column()
 	prof_description: string;
-
-	@Column()
-	prof_links: string;
 
 	@Column()
 	prof_custom_url: string;

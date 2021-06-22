@@ -7,7 +7,7 @@ class ProfileListAllService {
 		const profilesRepository = getRepository(Profile);
 
 		const profiles = profilesRepository.find({
-			order: { prof_username: 'ASC' }
+			order: { prof_description: 'ASC' }
 		});
 
 		return profiles;

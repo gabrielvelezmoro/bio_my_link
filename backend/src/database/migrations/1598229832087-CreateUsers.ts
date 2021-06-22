@@ -28,13 +28,6 @@ export class CreateUsers1598229832087 implements MigrationInterface {
   					type: 'varchar',
   				},
   				{
-  					name: 'profile_id',
-  					type: 'varchar',
-					isUnique: true,
-					isNullable: true
-
-  				},
-  				{
   					name: 'user_customer',
   					type: 'boolean',
 					default: true
@@ -43,6 +36,13 @@ export class CreateUsers1598229832087 implements MigrationInterface {
 					name: 'user_avatar',
 					type: 'varchar',
 					isNullable: true
+				},
+				{
+					name: 'profile',
+					type: 'varchar',
+					isNullable: true,
+					isUnique: true
+
 				},
   				{
   					name: 'created_at',
@@ -57,6 +57,7 @@ export class CreateUsers1598229832087 implements MigrationInterface {
   			]
   		})
   	);
+	  
 	  
   }
 

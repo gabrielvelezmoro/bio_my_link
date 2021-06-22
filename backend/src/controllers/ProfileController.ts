@@ -12,7 +12,7 @@ export default class ProfileController {
 	public async create(request: Request, response: Response): Promise<Response> {
 		try {
 			const { 
-				profUsername,
+				user,
                 profDescription,
                 profLinks,
                 profCustomUrl
@@ -21,7 +21,7 @@ export default class ProfileController {
 			const profileCreate = new ProfileCreateService();
 
 			const profile = await profileCreate.execute({
-				prof_username: profUsername,
+				user: user,
                 prof_description: profDescription,
                 prof_links: profLinks,
                 prof_custom_url: profCustomUrl
@@ -97,7 +97,7 @@ export default class ProfileController {
 		const id = request.params.id;
 
 		const { 
-			profUsername,
+			userId,
 			profDescription,
             profLinks,
             profCustomUrl
@@ -108,7 +108,7 @@ export default class ProfileController {
 
 			const profile = await profileUpdate.execute({
 				id,
-				prof_username: profUsername,
+				user: userId,
                 prof_description: profDescription,
                 prof_links: profLinks,
                 prof_custom_url: profCustomUrl

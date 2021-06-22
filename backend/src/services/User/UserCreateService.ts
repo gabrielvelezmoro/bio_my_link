@@ -6,13 +6,12 @@ import User from '../../models/User';
 interface Request {
 	user_name: string;
 	user_email: string;
-	profile_id: string;
 	user_customer: Boolean;
 	user_password: string;
 }
 
 class UserCreateService {
-	public async execute({ user_name, user_email, user_password, profile_id, user_customer }: Request): Promise<User> {
+	public async execute({ user_name, user_email, user_password, user_customer }: Request): Promise<User> {
 		const usersRepository = getRepository(User);
 
 		const checkIfUsernameExists = await usersRepository.findOne({
@@ -36,7 +35,6 @@ class UserCreateService {
 		const user = usersRepository.create({
 			user_name,
 			user_email,
-			profile_id,
 			user_customer,
 			user_password: hashedPassword
 		});

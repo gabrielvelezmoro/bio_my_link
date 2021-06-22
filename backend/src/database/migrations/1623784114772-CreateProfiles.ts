@@ -9,10 +9,17 @@ export class CreateProfiles1623784114772 implements MigrationInterface {
                 columns: [
                     {
                         name: 'id',
-                        type: 'varchar',
+                        type: 'uuid',
                         isPrimary: true,
                         generationStrategy: 'uuid',
                         default: 'uuid_generate_v4()'
+                    },
+                    {
+                        name: 'user',
+                        type: 'varchar',
+                        isUnique: true,
+                        isNullable: true
+
                     },
                     {
                         name: 'prof_description',
@@ -38,13 +45,21 @@ export class CreateProfiles1623784114772 implements MigrationInterface {
             })
         );
         await queryRunner.createForeignKey(
-            'users',
+            'profiles',
             new TableForeignKey({
-              columnNames: ['profile_id'],
-              referencedTableName: 'profiles',
-              referencedColumnNames: ['id']
+              columnNames: ['user'],
+              referencedTableName: 'users',
+              referencedColumnNames: ['profile']
             })
           )
+        await queryRunner.createForeignKey(
+            'users',
+            new TableForeignKey({
+                columnNames: ['profile'],
+                referencedTableName: 'profiles',
+                referencedColumnNames: ['user']
+            })
+            )  
     }
 
     public async down(queryRunner: QueryRunner): Promise<void> {

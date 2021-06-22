@@ -1,11 +1,13 @@
-import { Entity, Column, PrimaryGeneratedColumn, CreateDateColumn, UpdateDateColumn } from 'typeorm';
+import { Entity, Column, PrimaryGeneratedColumn, CreateDateColumn, UpdateDateColumn, OneToOne, JoinColumn } from 'typeorm';
+import Profile from './Profile';
 
 import { Exclude, Expose } from 'class-transformer';
 
 @Entity('users', {database: 'default', schema: 'public'})
 class User {
+	
 	@PrimaryGeneratedColumn('uuid')
-	id: string;
+	id: String;
 
 	@Column()
 	user_name: String;
@@ -13,15 +15,16 @@ class User {
 	@Column()
 	user_email: String;
 
+	@OneToOne(type => Profile, user => User)
+	@JoinColumn({name: "profile"})
+	profile: Profile;
+
 	@Column()
 	@Exclude()
 	user_password: String;
 
 	@Column()
 	user_customer: Boolean;
-	
-	@Column()
-	profile_id: String;
 
 	@Column()
 	user_avatar: String;

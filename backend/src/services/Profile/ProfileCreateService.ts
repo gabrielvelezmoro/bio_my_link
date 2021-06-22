@@ -1,24 +1,32 @@
 import { getRepository } from 'typeorm';
 
 import Profile from '../../models/Profile';
+import User from '../../models/User'
 
 interface Request {
-	prof_username: string;
+	user: User;
 	prof_description: string;
 	prof_links: string;
 	prof_custom_url: string;
 }
 
 class ProfileCreateService {
-	public async execute({ prof_username, prof_description, prof_links, prof_custom_url }: Request): Promise<Profile> {
+	public async execute({ prof_description, user, prof_custom_url }: Request): Promise<Profile> {
 		const profilesRepository = getRepository(Profile);
+		const usersRepository = getRepository(User);
 
 		const profile = profilesRepository.create({
-			prof_username,
+			user,
 			prof_description,
-			prof_links,
 			prof_custom_url
 		});
+
+		const userExist = await usersRepository.findOne(user);
+
+		if (!userExist) {
+			throw new Error('Usuário não localizado.');
+		}
+
 
 		await profilesRepository.save(profile);
 
