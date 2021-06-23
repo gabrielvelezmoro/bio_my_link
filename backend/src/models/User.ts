@@ -16,7 +16,6 @@ class User {
 	user_email: String;
 
 	@OneToOne(type => Profile, user => User)
-	@JoinColumn({name: "profile"})
 	profile: Profile;
 
 	@Column()

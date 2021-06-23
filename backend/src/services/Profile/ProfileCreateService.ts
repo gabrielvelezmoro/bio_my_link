@@ -13,7 +13,7 @@ interface Request {
 class ProfileCreateService {
 	public async execute({ prof_description, user, prof_custom_url }: Request): Promise<Profile> {
 		const profilesRepository = getRepository(Profile);
-		const usersRepository = getRepository(User);
+		const userRepository = getRepository(User);
 
 		const profile = profilesRepository.create({
 			user,
@@ -21,11 +21,11 @@ class ProfileCreateService {
 			prof_custom_url
 		});
 
-		const userExist = await usersRepository.findOne(user);
+		// const userExist = await userRepository.findOneOrFail({ where: { profile: user } });
 
-		if (!userExist) {
-			throw new Error('Usuário não localizado.');
-		}
+		// if (!userExist) {
+		// 	throw new Error('Usuário não localizado.');
+		// }
 
 
 		await profilesRepository.save(profile);

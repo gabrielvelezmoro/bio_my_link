@@ -40,8 +40,9 @@ export class CreateUsers1598229832087 implements MigrationInterface {
 				{
 					name: 'profile',
 					type: 'varchar',
-					isNullable: true,
-					isUnique: true
+					isUnique: true,
+					generationStrategy: 'uuid',
+                    default: 'uuid_generate_v4()'
 
 				},
   				{

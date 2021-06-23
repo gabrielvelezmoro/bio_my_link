@@ -18,7 +18,7 @@ export class CreateProfiles1623784114772 implements MigrationInterface {
                         name: 'user',
                         type: 'varchar',
                         isUnique: true,
-                        isNullable: true
+                        isNullable: false
 
                     },
                     {
@@ -52,14 +52,6 @@ export class CreateProfiles1623784114772 implements MigrationInterface {
               referencedColumnNames: ['profile']
             })
           )
-        await queryRunner.createForeignKey(
-            'users',
-            new TableForeignKey({
-                columnNames: ['profile'],
-                referencedTableName: 'profiles',
-                referencedColumnNames: ['user']
-            })
-            )  
     }
 
     public async down(queryRunner: QueryRunner): Promise<void> {
