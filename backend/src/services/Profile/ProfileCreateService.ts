@@ -21,7 +21,7 @@ class ProfileCreateService {
 			prof_custom_url
 		});
 
-		// const userExist = await userRepository.findOneOrFail({ where: { profile: user } });
+		// const userExist = await userRepository.find({ where: { profile: user } });
 
 		// if (!userExist) {
 		// 	throw new Error('Usuário não localizado.');

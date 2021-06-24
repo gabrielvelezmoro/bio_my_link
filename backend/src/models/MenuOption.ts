@@ -1,6 +1,5 @@
 import { Entity, Column, PrimaryGeneratedColumn, CreateDateColumn, UpdateDateColumn, OneToOne, JoinColumn } from 'typeorm';
 
-import Module from './Module';
 
 @Entity('menu_options', {database: 'default', schema: 'public'})
 class MenuOption {

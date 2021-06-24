@@ -17,14 +17,14 @@ class ProfileListFilteredService {
 
 		let sqlWhere = '';
 		
-		sqlWhere += 'prof_username ilike \'%' + search + '%\' or ';
+		sqlWhere += 'user ilike \'%' + search + '%\' or ';
 		sqlWhere += 'prof_description ilike \'%' + search + '%\' or ';
 		sqlWhere += 'prof_links ilike \'%' + search + '%\' or ';
 		sqlWhere += 'prof_custom_url ilike \'%' + search + '%\'';
 
 		const profiles = await profilesRepository.find({
 			where: sqlWhere,
-			order: { prof_username: 'ASC' },
+			order: { user: 'ASC' },
 			take: take,
 			skip: skip
 		});

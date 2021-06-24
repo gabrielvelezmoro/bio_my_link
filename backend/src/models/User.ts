@@ -1,4 +1,4 @@
-import { Entity, Column, PrimaryGeneratedColumn, CreateDateColumn, UpdateDateColumn, OneToOne, JoinColumn } from 'typeorm';
+import { Entity, Column, PrimaryGeneratedColumn, CreateDateColumn, UpdateDateColumn, OneToOne, JoinColumn, Generated } from 'typeorm';
 import Profile from './Profile';
 
 import { Exclude, Expose } from 'class-transformer';
@@ -15,8 +15,10 @@ class User {
 	@Column()
 	user_email: String;
 
-	@OneToOne(type => Profile, user => User)
-	profile: Profile;
+	@Generated()
+	@Column()
+	@Expose()
+	profile: String;
 
 	@Column()
 	@Exclude()

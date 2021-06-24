@@ -38,6 +38,7 @@ class UserCreateService {
 			user_customer,
 			user_password: hashedPassword
 		});
+		console.log(user.profile); 
 
 		await usersRepository.save(user);
 

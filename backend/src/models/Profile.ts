@@ -6,8 +6,8 @@ class Profile {
 	@PrimaryGeneratedColumn('uuid')
 	id: string;
 
-	@OneToOne(type => User, profile => Profile )
-	@JoinColumn({name: "user"})
+	@OneToOne(type => User, profile => Profile  )
+	@JoinColumn({name: 'user'})
 	user: User;
 
 	@Column()

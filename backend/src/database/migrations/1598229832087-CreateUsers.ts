@@ -45,6 +45,11 @@ export class CreateUsers1598229832087 implements MigrationInterface {
                     default: 'uuid_generate_v4()'
 
 				},
+				{
+					name: 'profileID',
+					type: 'varchar',
+					isNullable: true
+				},
   				{
   					name: 'created_at',
   					type: 'timestamp',
