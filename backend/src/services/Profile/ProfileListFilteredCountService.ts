@@ -13,7 +13,7 @@ class ProfileListFilteredCountService {
 		let sqlWhere = '';
 		
 		sqlWhere += 'user ilike \'%' + search + '%\' or ';
-		sqlWhere += 'prof_links ilike \'%' + search + '%\' or ';
+		sqlWhere += 'prof_description ilike \'%' + search + '%\' or ';
 		sqlWhere += 'prof_custom_url ilike \'%' + search + '%\'';
 
 		const [profiles, profilesCount] = await profilesRepository.findAndCount({

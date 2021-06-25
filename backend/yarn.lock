@@ -995,6 +995,11 @@ jsonwebtoken@^8.5.1:
     ms "^2.1.1"
     semver "^5.6.0"
 
+just-omit@^1.1.0:
+  version "1.1.0"
+  resolved "https://registry.yarnpkg.com/just-omit/-/just-omit-1.1.0.tgz#ea507d3a251a36383d09e47324181d7f4acb2ea6"
+  integrity sha512-MBDr0a1Yyzht8KK3RS2oUKtJSKRrm+6txDuEFJOXoALnX4h+FcQyWSKVNDlZiClOSIRf1PkzJ+QkKm0pjLS7Mw==
+
 jwa@^1.4.1:
   version "1.4.1"
   resolved "https://registry.yarnpkg.com/jwa/-/jwa-1.4.1.tgz#743c32985cb9e98655530d53641b66c8645b039a"

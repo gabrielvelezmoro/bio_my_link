@@ -10,6 +10,6 @@ const routes = Router();
 routes.use('/user', userRouter);
 routes.use('/session', sessionRouter);
 routes.use('/menu-option', menuOptionRouter);
-routes.use('/profiles', profileRouter);
+routes.use('/profile', profileRouter);
 
 export default routes;
