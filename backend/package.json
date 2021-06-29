@@ -20,7 +20,8 @@
     "pg": "^8.3.2",
     "reflect-metadata": "^0.1.13",
     "typeorm": "^0.2.25",
-    "uuidv4": "^6.2.4"
+    "uuidv4": "^6.2.4",
+    "yup": "^0.32.9"
   },
   "scripts": {
     "build": "tsc",

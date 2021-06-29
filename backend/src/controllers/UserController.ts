@@ -1,5 +1,6 @@
 import { Request, Response } from 'express';
 import { classToClass } from 'class-transformer';
+import * as Yup from 'yup';
 
 import UserCreateService from '../services/User/UserCreateService';
 import UserListAllService from '../services/User/UserListAllService';
@@ -11,13 +12,30 @@ import UserDeleteService from '../services/User/UserDeleteService';
 
 export default class UserController {
 	public async create(request: Request, response: Response): Promise<Response> {
+		
 		try {
-			const { 
+			const schema = Yup.object().shape({
+				userName: Yup.string().required().max(15),
+				userEmail: Yup.string()
+				  .email()
+				  .required(),
+				userPassword: Yup.string()
+				  .required()
+				  .min(6)
+				  ,
+			  });
+			 const { 
+
 				userName, 
 				userEmail, 
 				userCustomer,
 				userPassword, 
 			} = request.body;
+			
+
+			if (!(await schema.validate({userName, userEmail,userPassword}))){
+				return response.status(400).json({ error: 'Validation fails' });
+			}
 
 			const userCreate = new UserCreateService();
 

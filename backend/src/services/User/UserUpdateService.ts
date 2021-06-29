@@ -33,7 +33,6 @@ class UserUpdateService {
 
 		await usersRepository.save(user);
 
-		 delete user['user_password'];
 
 		return user;
 	}
