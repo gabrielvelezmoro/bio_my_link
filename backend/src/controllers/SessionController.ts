@@ -14,9 +14,10 @@ export default class SessionController {
 				user_email: userEmail,
 				user_password: userPassword
 			});
-
+			
 			return response.json({ user: classToClass(user), token });
 		} catch (err) {
+			console.log(err);
 			return response.status(400).json({ error: err.message });
 		}
 	}

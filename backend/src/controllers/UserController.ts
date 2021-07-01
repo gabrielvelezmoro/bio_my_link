@@ -115,13 +115,33 @@ export default class UserController {
 	public async update(request: Request, response: Response): Promise<Response> {
 		const id = request.params.id;
 
+		const schema = Yup.object().shape({
+			userName: Yup.string(),
+			userEmail: Yup.string().email(),
+			oldPassword: Yup.string().min(6),
+			userPassword: Yup.string()
+			  .min(6)
+			  .when('oldPassword', (oldPassword, field) =>
+				oldPassword ? field.required() : field
+			  ),
+			confirmPassword: Yup.string().when('userPassword', (userPassword, field) =>
+			  userPassword ? field.required().oneOf([Yup.ref('userPassword')]) : field
+			),
+		  });
+
 		const { 
 			userName, 
-			userEmail, 
+			userEmail,
 			userCustomer,
+			oldPassword,
 			userPassword,
+			confirmPassword, 
 			profile 
 		} = request.body;
+
+		if (!(await schema.validate({userName, userEmail,userPassword, oldPassword, confirmPassword}))){
+			return response.status(400).json({ error: 'Validation fails' });
+		}
 
 		try {
 			const userUpdate = new UserUpdateService();
@@ -134,6 +154,8 @@ export default class UserController {
                 user_password: userPassword,
 				profile: profile
 			});
+
+			delete user.user_password;
 
 			return response.json(user);
 		} catch (err) {

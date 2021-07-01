@@ -16,18 +16,17 @@ export default function ensureAuthenticated(request: Request, response: Response
 		throw new Error('JWT token is missing.');
 	}
 
-	const [, token] = authHeader.split(' ');
+	const [token] = authHeader.split(' ');
+
 
 	try {
 		const decoded = verify(token, authConfig.jwt.secret);
-
 		const { sub } = decoded as TokenPayload;
 
 		// to add additional information about user, include at "/src/@types/express.d.ts"
 		request.user = {
 			id: sub
 		};
-
 		return next();
 	} catch {
 		throw new Error('Invalid JWT token.');

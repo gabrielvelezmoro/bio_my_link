@@ -20,7 +20,7 @@ class User {
 	@Expose()
 	profile: String;
 
-	@Column({ select: false })
+	@Column({ })
 	@Exclude()
 	user_password: String;
 

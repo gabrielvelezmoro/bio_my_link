@@ -22,7 +22,7 @@ class UserAuthenticateService {
 		const user = await usersRepository.findOne({
 			where: { user_email }
 		});
-
+		
 		if (!user) {
 			throw new Error('Incorrect userEmail/password combination.');
 		}
